@@ -19,3 +19,5 @@ export {
 } from './AzureStorageAuthentication';
 
 export default RushAzureStorageBuildCachePlugin;
+
+// test
