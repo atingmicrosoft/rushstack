@@ -24,12 +24,9 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   //   setLogLevel(extensionLogLevel);
   // }
   // vscode.window.showInformationMessage('TLS Cetification UI Extension is now active!');
-  terminal.writeLine('was here');
   context.subscriptions.push(
     vscode.commands.registerCommand('rushstack.ensureDebugCertificate', async () => {
-      terminal.writeLine('was here 2');
       const manager: CertificateManager = new CertificateManager();
-      terminal.writeLine('was here 3');
       const { pemCaCertificate, pemCertificate, pemKey } = await manager.ensureCertificateAsync(
         true,
         terminal
