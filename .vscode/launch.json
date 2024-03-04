@@ -82,6 +82,19 @@
 				"${workspaceFolder}/vscode-extensions/rush-vscode-extension/dist/**/*.js"
 			]
 			// "preLaunchTask": "npm: build:watch - vscode-extensions/rush-vscode-extension"
+		},
+		{
+			"name": "Launch TLS Certification UI",
+			"type": "extensionHost",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/vscode-extensions/tls-certification-ui",
+			"args": [
+				"--extensionDevelopmentPath=${workspaceFolder}/vscode-extensions/tls-certification-ui"
+			],
+			"outFiles": [
+				"${workspaceFolder}/vscode-extensions/tls-certification-ui/dist/**/*.js"
+			]
+			// "preLaunchTask": "npm: build:watch - vscode-extensions/tls-certification-ui"
 		}
 	]
 }

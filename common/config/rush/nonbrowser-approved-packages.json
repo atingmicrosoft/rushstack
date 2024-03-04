@@ -96,7 +96,7 @@
     },
     {
       "name": "@rushstack/debug-certificate-manager",
-      "allowedCategories": [ "libraries", "vscode-extensions" ]
+      "allowedCategories": [ "libraries", "tests", "vscode-extensions" ]
     },
     {
       "name": "@rushstack/eslint-config",
@@ -204,7 +204,7 @@
     },
     {
       "name": "@rushstack/package-extractor",
-      "allowedCategories": [ "libraries", "vscode-extensions" ]
+      "allowedCategories": [ "libraries", "tests", "vscode-extensions" ]
     },
     {
       "name": "@rushstack/rig-package",
@@ -264,7 +264,7 @@
     },
     {
       "name": "@rushstack/webpack-preserve-dynamic-require-plugin",
-      "allowedCategories": [ "libraries", "vscode-extensions" ]
+      "allowedCategories": [ "libraries", "tests", "vscode-extensions" ]
     },
     {
       "name": "@rushstack/webpack4-localization-plugin",
@@ -356,7 +356,7 @@
     },
     {
       "name": "@vscode/test-electron",
-      "allowedCategories": [ "vscode-extensions" ]
+      "allowedCategories": [ "tests", "vscode-extensions" ]
     },
     {
       "name": "@yarnpkg/lockfile",
@@ -516,7 +516,7 @@
     },
     {
       "name": "glob",
-      "allowedCategories": [ "libraries", "vscode-extensions" ]
+      "allowedCategories": [ "libraries", "tests", "vscode-extensions" ]
     },
     {
       "name": "glob-escape",
@@ -672,7 +672,7 @@
     },
     {
       "name": "mocha",
-      "allowedCategories": [ "vscode-extensions" ]
+      "allowedCategories": [ "tests", "vscode-extensions" ]
     },
     {
       "name": "node-fetch",
@@ -852,7 +852,7 @@
     },
     {
       "name": "vsce",
-      "allowedCategories": [ "vscode-extensions" ]
+      "allowedCategories": [ "tests", "vscode-extensions" ]
     },
     {
       "name": "watchpack",
