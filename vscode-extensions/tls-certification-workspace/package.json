@@ -1,16 +1,16 @@
 {
-  "name": "rushstack",
-  "version": "0.0.2",
+  "name": "@rushstack/tls-certification-workspace",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/rushstack.git",
-    "directory": "vscode-extensions/rush-vscode-extension"
+    "directory": "vscode-extensions/tls-certification-workspace"
   },
   "license": "MIT",
-  "publisher": "RushStack",
+  "publisher": "rushstack",
   "preview": true,
-  "displayName": "Rush Stack monorepo tools",
-  "description": "Enhanced experience for monorepos that use the Rush Stack toolchain",
+  "displayName": "TLS Certification Workspace",
+  "description": "Creates TLS Certificates as a Workspace Extension",
   "homepage": "https://rushstack.io",
   "categories": [
     "Formatters",
@@ -86,90 +86,16 @@
   "contributes": {
     "commands": [
       {
-        "command": "rushstack.openSettings",
+        "command": "rushstack.ensureDebugCertificate",
         "category": "RushStack",
-        "title": "Open Settings"
+        "title": "Ensure Debug Certificate"
       },
       {
-        "command": "rushstack.selectWorkspace",
+        "command": "rushstack.saveDebugCertificate",
         "category": "RushStack",
-        "title": "Select workspace"
-      },
-      {
-        "command": "rushstack.refresh",
-        "category": "RushStack",
-        "title": "Refresh",
-        "icon": "$(refresh)"
-      },
-      {
-        "command": "rushstack.rushCommands.openParameterViewPanel",
-        "category": "RushStack",
-        "title": "Open Parameter View Panel"
-      },
-      {
-        "command": "rushstack.rushCommands.runRushCommand",
-        "category": "RushStack",
-        "title": "Run Rush Command"
-      },
-      {
-        "command": "rushstack.rushProjects.revealInExplorer",
-        "category": "RushStack",
-        "title": "Reveal In Explorer",
-        "icon": "$(folder)"
-      },
-      {
-        "command": "rushstack.rushProjects.revealProjectDetail",
-        "category": "RushStack",
-        "title": "See Project Details",
-        "icon": "$(search)"
-      },
-      {
-        "command": "rushstack.rushProjects.runProjectScript",
-        "category": "RushStack",
-        "title": "Run",
-        "icon": "$(play)"
+        "title": "Save Debug Certificate"
       }
     ],
-    "configuration": {
-      "title": "Rush Stack monorepo tools",
-      "properties": {
-        "rushstack.logLevel": {
-          "type": "string",
-          "default": "info",
-          "enum": [
-            "info",
-            "debug"
-          ],
-          "description": "The log level to use for the VS Code extension"
-        }
-      }
-    },
-    "menus": {
-      "view/title": [
-        {
-          "command": "rushstack.refresh",
-          "when": "view == rushProjects || view == rushCommands",
-          "group": "navigation"
-        }
-      ],
-      "view/item/context": [
-        {
-          "command": "rushstack.rushProjects.revealInExplorer",
-          "when": "view == rushProjects && viewItem == project",
-          "group": "inline"
-        },
-        {
-          "command": "rushstack.rushProjects.revealProjectDetail",
-          "when": "view == rushProjects && viewItem == project",
-          "group": "inline"
-        },
-        {
-          "command": "rushstack.rushProjects.runProjectScript",
-          "when": "view == rushProjects && viewItem == projectScript",
-          "group": "inline"
-        }
-      ]
-    },
     "taskDefinitions": [
       {
         "type": "rush",
@@ -220,19 +146,6 @@
         }
       }
     ],
-    "views": {
-      "rushstack": [
-        {
-          "id": "rushProjects",
-          "name": "Projects"
-        },
-        {
-          "id": "rushProjectDetails",
-          "type": "webview",
-          "name": "Rush Project Details"
-        }
-      ]
-    },
     "viewsContainers": {
       "activitybar": [
         {
@@ -242,25 +155,32 @@
         }
       ]
     },
-    "viewsWelcome": [
-      {
-        "view": "rushProjects",
-        "contents": "Open a monorepo folder containing a rush.json config file.\n[Open Folder](command:vscode.openFolder)\nFor more information about the Rush Stack tools, consult the [website documentation](https://rushstack.io).",
-        "when": "workbenchState == empty"
+    "configuration": {
+      "title": "TLS Certificate Workspace monorepo tools",
+      "properties": {
+        "rushstack.logLevelTLS": {
+          "type": "string",
+          "default": "info",
+          "enum": [
+            "info",
+            "debug"
+          ],
+          "description": "The log level to use for the VS Code extension"
+        }
       }
-    ]
+    }
   },
   "activationEvents": [
-    "onView:rushProjects",
-    "onView:rushCommands",
-    "onView:rushProjectDetails"
+    "onView:rushCommands"
   ],
   "dependencies": {
     "@rushstack/node-core-library": "workspace:*",
     "@rushstack/rush-sdk": "workspace:*",
     "@rushstack/ts-command-line": "workspace:*",
     "@rushstack/rush-vscode-command-webview": "workspace:*",
-    "@rushstack/terminal": "workspace:*"
+    "@rushstack/terminal": "workspace:*",
+    "@rushstack/debug-certificate-manager": "workspace:*",
+    "@rushstack/tls-certification-ui": "workspace:*"
   },
   "devDependencies": {
     "@microsoft/rush-lib": "workspace:*",

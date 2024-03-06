@@ -51,6 +51,14 @@
       "allowedCategories": [ "tests", "vscode-extensions" ]
     },
     {
+      "name": "@rushstack/tls-certification-ui",
+      "allowedCategories": [ "tests" ]
+    },
+    {
+      "name": "@rushstack/tls-certificcation-ui",
+      "allowedCategories": [ "tests" ]
+    },
+    {
       "name": "axios",
       "allowedCategories": [ "libraries" ]
     },

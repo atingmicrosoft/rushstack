@@ -14,11 +14,12 @@ export const terminal: Terminal = new Terminal(consoleTerminalProvider);
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
-  vscode.window.showInformationMessage('TLS Cetification UI Extension is now active!');
+  vscode.window.showInformationMessage('TLS Cetification Workspace Extension is now active!');
 
   context.subscriptions.push(
     vscode.commands.registerCommand('rushstack.ensureDebugCertificate', async () => {
       const manager: CertificateManager = new CertificateManager();
+
       const { pemCaCertificate, pemCertificate, pemKey } = await manager.ensureCertificateAsync(
         true,
         terminal

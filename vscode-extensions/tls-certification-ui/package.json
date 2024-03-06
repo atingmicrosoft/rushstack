@@ -1,5 +1,5 @@
 {
-  "name": "tls-certification-ui",
+  "name": "@rushstack/tls-certification-ui",
   "version": "0.0.1",
   "repository": {
     "type": "git",

@@ -920,8 +920,14 @@
       "shouldPublish": false
     },
     {
-      "packageName": "tls-certification-ui",
+      "packageName": "@rushstack/tls-certification-ui",
       "projectFolder": "vscode-extensions/tls-certification-ui",
+      "reviewCategory": "tests",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@rushstack/tls-certification-workspace",
+      "projectFolder": "vscode-extensions/tls-certification-workspace",
       "reviewCategory": "tests",
       "shouldPublish": false
     },

@@ -34,16 +34,6 @@
               ]
             }
           }
-        },
-        "generate-vscodeignore": {
-          "taskDependencies": ["copy-webview", "typescript", "webpack"],
-          "taskPlugin": {
-            "pluginPackage": "@rushstack/heft",
-            "pluginName": "run-script-plugin",
-            "options": {
-              "scriptPath": "lib/scripts/generate-vscodeignore.js"
-            }
-          }
         }
       }
     }

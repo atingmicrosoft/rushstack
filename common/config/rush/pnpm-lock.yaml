@@ -1774,7 +1774,7 @@ importers:
         version: 29.5.12
       '@types/node':
         specifier: ts4.9
-        version: 20.11.24
+        version: 20.11.25
       eslint:
         specifier: ~8.7.0
         version: 8.7.0(supports-color@8.1.1)
@@ -4061,9 +4061,6 @@ importers:
 
   ../../vscode-extensions/rush-vscode-extension:
     dependencies:
-      '@rushstack/debug-certificate-manager':
-        specifier: workspace:*
-        version: link:../../libraries/debug-certificate-manager
       '@rushstack/node-core-library':
         specifier: workspace:*
         version: link:../../libraries/node-core-library
@@ -4140,6 +4137,73 @@ importers:
       '@rushstack/terminal':
         specifier: workspace:*
         version: link:../../libraries/terminal
+      '@rushstack/ts-command-line':
+        specifier: workspace:*
+        version: link:../../libraries/ts-command-line
+    devDependencies:
+      '@microsoft/rush-lib':
+        specifier: workspace:*
+        version: link:../../libraries/rush-lib
+      '@rushstack/heft':
+        specifier: workspace:*
+        version: link:../../apps/heft
+      '@rushstack/heft-webpack5-plugin':
+        specifier: workspace:*
+        version: link:../../heft-plugins/heft-webpack5-plugin
+      '@rushstack/package-extractor':
+        specifier: workspace:*
+        version: link:../../libraries/package-extractor
+      '@rushstack/webpack-preserve-dynamic-require-plugin':
+        specifier: workspace:*
+        version: link:../../webpack/preserve-dynamic-require-plugin
+      '@types/glob':
+        specifier: 7.1.1
+        version: 7.1.1
+      '@types/mocha':
+        specifier: ^9.0.0
+        version: 9.1.1
+      '@types/vscode':
+        specifier: ^1.63.0
+        version: 1.86.0
+      '@types/webpack-env':
+        specifier: 1.18.0
+        version: 1.18.0
+      '@vscode/test-electron':
+        specifier: ^1.6.2
+        version: 1.6.2
+      glob:
+        specifier: ~7.0.5
+        version: 7.0.6
+      local-node-rig:
+        specifier: workspace:*
+        version: link:../../rigs/local-node-rig
+      mocha:
+        specifier: ^9.1.3
+        version: 9.2.2
+      vsce:
+        specifier: ~2.14.0
+        version: 2.14.0
+
+  ../../vscode-extensions/tls-certification-workspace:
+    dependencies:
+      '@rushstack/debug-certificate-manager':
+        specifier: workspace:*
+        version: link:../../libraries/debug-certificate-manager
+      '@rushstack/node-core-library':
+        specifier: workspace:*
+        version: link:../../libraries/node-core-library
+      '@rushstack/rush-sdk':
+        specifier: workspace:*
+        version: link:../../libraries/rush-sdk
+      '@rushstack/rush-vscode-command-webview':
+        specifier: workspace:*
+        version: link:../rush-vscode-command-webview
+      '@rushstack/terminal':
+        specifier: workspace:*
+        version: link:../../libraries/terminal
+      '@rushstack/tls-certification-ui':
+        specifier: workspace:*
+        version: link:../tls-certification-ui
       '@rushstack/ts-command-line':
         specifier: workspace:*
         version: link:../../libraries/ts-command-line
@@ -11841,8 +11905,8 @@ packages:
   /@types/node@18.17.15:
     resolution: {integrity: sha512-2yrWpBk32tvV/JAd3HNHWuZn/VDN1P+72hWirHnvsvTGSqbANi+kSeuQR9yAHnbvaBvHDsoTdXV0Fe+iRtHLKA==}
 
-  /@types/node@20.11.24:
-    resolution: {integrity: sha512-Kza43ewS3xoLgCEpQrsT+xRo/EJej1y0kVYGiLFE1NEODXGzTfwiC6tXTLMQskn1X4/Rjlh0MQUvx9W+L9long==}
+  /@types/node@20.11.25:
+    resolution: {integrity: sha512-TBHyJxk2b7HceLVGFcpAUjsa5zIdsPWlR6XHfyGzd0SFu+/NFgQgMAl96MSDZgQDvJAvV6BKsFOrt6zIL09JDw==}
     dependencies:
       undici-types: 5.26.5
     dev: true

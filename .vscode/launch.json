@@ -95,6 +95,19 @@
 				"${workspaceFolder}/vscode-extensions/tls-certification-ui/dist/**/*.js"
 			]
 			// "preLaunchTask": "npm: build:watch - vscode-extensions/tls-certification-ui"
+		},
+		{
+			"name": "Launch TLS Certification Workspace",
+			"type": "extensionHost",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/vscode-extensions/tls-certification-workspace",
+			"args": [
+				"--extensionDevelopmentPath=${workspaceFolder}/vscode-extensions/tls-certification-workspace"
+			],
+			"outFiles": [
+				"${workspaceFolder}/vscode-extensions/tls-certification-workspace/dist/**/*.js"
+			]
+			// "preLaunchTask": "npm: build:watch - vscode-extensions/tls-certification-workspace"
 		}
 	]
 }
