@@ -90,11 +90,6 @@
         "command": "rushstack.ensureDebugCertificate",
         "category": "RushStack",
         "title": "Ensure Debug Certificate"
-      },
-      {
-        "command": "rushstack.saveDebugCertificate",
-        "category": "RushStack",
-        "title": "Save Debug Certificate"
       }
     ],
     "taskDefinitions": [

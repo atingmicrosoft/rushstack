@@ -30,12 +30,18 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
         await vscode.window.showErrorMessage('Certificate was not generated');
       }
 
-      await vscode.commands.executeCommand(
-        'rushstack.saveDebugCertificate',
-        pemCaCertificate,
-        pemCertificate,
-        pemKey
-      );
+      await vscode.commands
+        .executeCommand('rushstack.saveDebugCertificate', pemCaCertificate, pemCertificate, pemKey)
+        .then(
+          () => {
+            vscode.window.showInformationMessage('Certificate successfully saved (UI message)');
+          },
+          (error) => {
+            vscode.window.showErrorMessage(`Error saving certificate: ${error}`);
+          }
+        );
+
+      vscode.window.showInformationMessage('TLS UI finished running');
     })
   );
 }

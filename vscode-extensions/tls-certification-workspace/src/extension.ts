@@ -4,7 +4,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { CertificateManager } from '@rushstack/debug-certificate-manager';
+import { CertificateStore } from '@rushstack/debug-certificate-manager';
 import { ConsoleTerminalProvider, Terminal } from '@rushstack/terminal';
 
 const consoleTerminalProvider: ConsoleTerminalProvider = new ConsoleTerminalProvider();
@@ -17,27 +17,18 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   vscode.window.showInformationMessage('TLS Cetification Workspace Extension is now active!');
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('rushstack.ensureDebugCertificate', async () => {
-      const manager: CertificateManager = new CertificateManager();
+    vscode.commands.registerCommand(
+      'rushstack.saveDebugCertificate',
+      async (pemCaCertificate: string, pemCertificate: string, pemKey: string) => {
+        const store: CertificateStore = new CertificateStore();
 
-      const { pemCaCertificate, pemCertificate, pemKey } = await manager.ensureCertificateAsync(
-        true,
-        terminal
-      );
+        store.caCertificateData = pemCaCertificate;
+        store.certificateData = pemCertificate;
+        store.keyData = pemKey;
 
-      if (pemCaCertificate && pemCertificate && pemKey) {
-        await vscode.window.showInformationMessage('Certificate successfully generated');
-      } else {
-        await vscode.window.showErrorMessage('Certificate was not generated');
+        await vscode.window.showInformationMessage('Certificate successfully saved');
       }
-
-      await vscode.commands.executeCommand(
-        'rushstack.saveDebugCertificate',
-        pemCaCertificate,
-        pemCertificate,
-        pemKey
-      );
-    })
+    )
   );
 }
 
