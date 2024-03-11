@@ -103,6 +103,10 @@
       "allowedCategories": [ "vscode-extensions" ]
     },
     {
+      "name": "tls-certification-workspace",
+      "allowedCategories": [ "tests" ]
+    },
+    {
       "name": "tslib",
       "allowedCategories": [ "libraries", "tests", "vscode-extensions" ]
     }

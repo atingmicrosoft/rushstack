@@ -1,5 +1,5 @@
 {
-  "name": "@rushstack/tls-certification-workspace",
+  "name": "tls-certification-workspace",
   "version": "0.0.1",
   "repository": {
     "type": "git",
@@ -179,8 +179,7 @@
     "@rushstack/ts-command-line": "workspace:*",
     "@rushstack/rush-vscode-command-webview": "workspace:*",
     "@rushstack/terminal": "workspace:*",
-    "@rushstack/debug-certificate-manager": "workspace:*",
-    "@rushstack/tls-certification-ui": "workspace:*"
+    "@rushstack/debug-certificate-manager": "workspace:*"
   },
   "devDependencies": {
     "@microsoft/rush-lib": "workspace:*",

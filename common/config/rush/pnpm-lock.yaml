@@ -4140,6 +4140,9 @@ importers:
       '@rushstack/ts-command-line':
         specifier: workspace:*
         version: link:../../libraries/ts-command-line
+      tls-certification-workspace:
+        specifier: workspace:*
+        version: link:../tls-certification-workspace
     devDependencies:
       '@microsoft/rush-lib':
         specifier: workspace:*
@@ -4201,9 +4204,6 @@ importers:
       '@rushstack/terminal':
         specifier: workspace:*
         version: link:../../libraries/terminal
-      '@rushstack/tls-certification-ui':
-        specifier: workspace:*
-        version: link:../tls-certification-ui
       '@rushstack/ts-command-line':
         specifier: workspace:*
         version: link:../../libraries/ts-command-line
