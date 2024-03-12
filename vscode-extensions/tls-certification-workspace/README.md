@@ -22,5 +22,5 @@ Install through VS Code extensions. Search for `Rush Stack monorepo tools`
 Can also be installed in VS Code: Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.
 
 ```
-ext install RushStack.rushstack
+ext install rushstack.tls-certification-workspace
 ```

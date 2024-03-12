@@ -92,65 +92,6 @@
         "title": "Ensure Debug Certificate"
       }
     ],
-    "taskDefinitions": [
-      {
-        "type": "rush",
-        "required": [
-          "cwd",
-          "displayName",
-          "command",
-          "args"
-        ],
-        "properties": {
-          "cwd": {
-            "type": "string",
-            "description": "The working directory for the task"
-          },
-          "displayName": {
-            "type": "string",
-            "description": "The display name for the command"
-          },
-          "command": {
-            "type": "string",
-            "description": "The command to run"
-          },
-          "args": {
-            "type": "array",
-            "description": "The arguments to pass to the command"
-          }
-        }
-      },
-      {
-        "type": "rushx",
-        "required": [
-          "cwd",
-          "command"
-        ],
-        "properties": {
-          "cwd": {
-            "type": "string",
-            "description": "The working directory for the command"
-          },
-          "displayName": {
-            "type": "string",
-            "description": "The display name for the command"
-          },
-          "command": {
-            "type": "string",
-            "description": "The command to run"
-          }
-        }
-      }
-    ],
-    "viewsContainers": {
-      "activitybar": [
-        {
-          "id": "rushstack",
-          "title": "Rush Stack",
-          "icon": "resources/rushstack-icon.svg"
-        }
-      ]
-    },
     "configuration": {
       "title": "TLS Certificate UI monorepo tools",
       "properties": {
@@ -171,9 +112,6 @@
   ],
   "dependencies": {
     "@rushstack/node-core-library": "workspace:*",
-    "@rushstack/rush-sdk": "workspace:*",
-    "@rushstack/ts-command-line": "workspace:*",
-    "@rushstack/rush-vscode-command-webview": "workspace:*",
     "@rushstack/terminal": "workspace:*",
     "@rushstack/debug-certificate-manager": "workspace:*",
     "tls-certification-workspace": "workspace:*"

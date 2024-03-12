@@ -1774,7 +1774,7 @@ importers:
         version: 29.5.12
       '@types/node':
         specifier: ts4.9
-        version: 20.11.25
+        version: 20.11.26
       eslint:
         specifier: ~8.7.0
         version: 8.7.0(supports-color@8.1.1)
@@ -4128,18 +4128,9 @@ importers:
       '@rushstack/node-core-library':
         specifier: workspace:*
         version: link:../../libraries/node-core-library
-      '@rushstack/rush-sdk':
-        specifier: workspace:*
-        version: link:../../libraries/rush-sdk
-      '@rushstack/rush-vscode-command-webview':
-        specifier: workspace:*
-        version: link:../rush-vscode-command-webview
       '@rushstack/terminal':
         specifier: workspace:*
         version: link:../../libraries/terminal
-      '@rushstack/ts-command-line':
-        specifier: workspace:*
-        version: link:../../libraries/ts-command-line
       tls-certification-workspace:
         specifier: workspace:*
         version: link:../tls-certification-workspace
@@ -4195,18 +4186,9 @@ importers:
       '@rushstack/node-core-library':
         specifier: workspace:*
         version: link:../../libraries/node-core-library
-      '@rushstack/rush-sdk':
-        specifier: workspace:*
-        version: link:../../libraries/rush-sdk
-      '@rushstack/rush-vscode-command-webview':
-        specifier: workspace:*
-        version: link:../rush-vscode-command-webview
       '@rushstack/terminal':
         specifier: workspace:*
         version: link:../../libraries/terminal
-      '@rushstack/ts-command-line':
-        specifier: workspace:*
-        version: link:../../libraries/ts-command-line
     devDependencies:
       '@microsoft/rush-lib':
         specifier: workspace:*
@@ -11905,8 +11887,8 @@ packages:
   /@types/node@18.17.15:
     resolution: {integrity: sha512-2yrWpBk32tvV/JAd3HNHWuZn/VDN1P+72hWirHnvsvTGSqbANi+kSeuQR9yAHnbvaBvHDsoTdXV0Fe+iRtHLKA==}
 
-  /@types/node@20.11.25:
-    resolution: {integrity: sha512-TBHyJxk2b7HceLVGFcpAUjsa5zIdsPWlR6XHfyGzd0SFu+/NFgQgMAl96MSDZgQDvJAvV6BKsFOrt6zIL09JDw==}
+  /@types/node@20.11.26:
+    resolution: {integrity: sha512-YwOMmyhNnAWijOBQweOJnQPl068Oqd4K3OFbTc6AHJwzweUwwWG3GIFY74OKks2PJUDkQPeddOQES9mLn1CTEQ==}
     dependencies:
       undici-types: 5.26.5
     dev: true
