@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@microsoft/rush",
+      "comment": "Added new extension projects tls-certification-ui and tls-certification-workspace",
+      "type": "none"
+    }
+  ],
+  "packageName": "@microsoft/rush"
+}
