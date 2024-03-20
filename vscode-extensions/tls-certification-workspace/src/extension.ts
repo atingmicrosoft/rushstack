@@ -26,7 +26,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
         store.certificateData = pemCertificate;
         store.keyData = pemKey;
 
-        await vscode.window.showInformationMessage('Certificate successfully saved');
+        vscode.window.showInformationMessage('Certificate successfully saved');
       }
     )
   );
