@@ -43,3 +43,28 @@ extends:
                 displayName: 'Publish tls certification ui extension'
                 env:
                   VSCE_PAT: $(vscePat)
+          - job:
+            pool:
+              name: publish-tls-certification-workspace
+              os: linux
+            steps:
+              - checkout: self
+                persistCredentials: true
+
+              - template: /common/config/azure-pipelines/templates/install-node.yaml@self
+
+              - template: /common/config/azure-pipelines/templates/build.yaml@self
+                parameters:
+                  BuildParameters: >
+                    --to rushstack
+                  PerformValidation: false
+
+              - script: node $(Build.SourcesDirectory)/common/scripts/install-run-rushx.js package
+                workingDirectory: $(Build.SourcesDirectory)/vscode-extensions/tls-certification-workspace
+                displayName: 'Package tls certification workspace extension'
+
+              - script: node $(Build.SourcesDirectory)/common/scripts/install-run-rushx.js deploy
+                workingDirectory: $(Build.SourcesDirectory)/vscode-extensions/tls-certification-workspace
+                displayName: 'Publish tls certification workspace extension'
+                env:
+                  VSCE_PAT: $(vscePat)
