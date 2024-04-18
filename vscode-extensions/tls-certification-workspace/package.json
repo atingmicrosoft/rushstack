@@ -115,6 +115,9 @@
     "@rushstack/terminal": "workspace:*",
     "@rushstack/debug-certificate-manager": "workspace:*"
   },
+  "extensionKind": [
+    "workspace"
+  ],
   "devDependencies": {
     "@microsoft/rush-lib": "workspace:*",
     "local-node-rig": "workspace:*",
