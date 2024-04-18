@@ -920,6 +920,18 @@
       "shouldPublish": false
     },
     {
+      "packageName": "tls-certification-ui",
+      "projectFolder": "vscode-extensions/tls-certification-ui",
+      "reviewCategory": "tests",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "tls-certification-workspace",
+      "projectFolder": "vscode-extensions/tls-certification-workspace",
+      "reviewCategory": "tests",
+      "shouldPublish": false
+    },
+    {
       "packageName": "ts-command-line-test",
       "projectFolder": "build-tests/ts-command-line-test",
       "reviewCategory": "tests",

@@ -48,7 +48,15 @@
     },
     {
       "name": "@rushstack/rush-vscode-command-webview",
-      "allowedCategories": [ "vscode-extensions" ]
+      "allowedCategories": [ "tests", "vscode-extensions" ]
+    },
+    {
+      "name": "@rushstack/tls-certification-ui",
+      "allowedCategories": [ "tests" ]
+    },
+    {
+      "name": "@rushstack/tls-certificcation-ui",
+      "allowedCategories": [ "tests" ]
     },
     {
       "name": "axios",
@@ -93,6 +101,10 @@
     {
       "name": "scheduler",
       "allowedCategories": [ "vscode-extensions" ]
+    },
+    {
+      "name": "tls-certification-workspace",
+      "allowedCategories": [ "tests" ]
     },
     {
       "name": "tslib",

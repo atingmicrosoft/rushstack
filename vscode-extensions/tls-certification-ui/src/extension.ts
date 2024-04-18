@@ -1,0 +1,42 @@
+// Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
+// See LICENSE in the project root for license information.
+
+// The module 'vscode' contains the VS Code extensibility API
+// Import the module and reference it with the alias vscode in your code below
+import * as vscode from 'vscode';
+import { CertificateManager } from '@rushstack/debug-certificate-manager';
+import { ConsoleTerminalProvider, Terminal } from '@rushstack/terminal';
+
+const consoleTerminalProvider: ConsoleTerminalProvider = new ConsoleTerminalProvider();
+
+export const terminal: Terminal = new Terminal(consoleTerminalProvider);
+
+// this method is called when your extension is activated
+// your extension is activated the very first time the command is executed
+export async function activate(context: vscode.ExtensionContext): Promise<void> {
+  context.subscriptions.push(
+    vscode.commands.registerCommand('rushstack.ensureDebugCertificate', async () => {
+      try {
+        const manager: CertificateManager = new CertificateManager();
+        const { pemCaCertificate, pemCertificate, pemKey } = await manager.ensureCertificateAsync(
+          true,
+          terminal
+        );
+
+        await vscode.commands.executeCommand(
+          'rushstack.saveDebugCertificate',
+          pemCaCertificate,
+          pemCertificate,
+          pemKey
+        );
+      } catch (error) {
+        vscode.window.showErrorMessage(`Certificate was not generated with error: ${error}`);
+      }
+
+      vscode.window.showInformationMessage('TLS UI finished running');
+    })
+  );
+}
+
+// this method is called when your extension is deactivated
+export function deactivate(): void {}
