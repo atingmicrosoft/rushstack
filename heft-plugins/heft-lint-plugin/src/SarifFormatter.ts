@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
 // See LICENSE in the project root for license information.
 import type * as TEslint from 'eslint';
+import * as crypto from 'crypto';
 import path from 'node:path';
 import { Path } from '@rushstack/node-core-library';
 
@@ -14,17 +15,26 @@ export interface ISarifRun {
   tool: {
     driver: {
       name: string;
+      fullName: string;
       informationUri: string;
       version?: string;
       rules: IStaticAnalysisRules[];
     };
   };
+  automationDetails: IAutomationDetails;
   artifacts?: ISarifFile[];
   results?: ISarifRepresentation[];
   invocations?: {
     toolConfigurationNotifications: ISarifRepresentation[];
     executionSuccessful: boolean;
   }[];
+}
+
+export interface IAutomationDetails {
+  id: string;
+  description?: {
+    text: string;
+  };
 }
 
 export interface ISarifRepresentation {
@@ -39,6 +49,7 @@ export interface ISarifRepresentation {
     id: string;
   };
   suppressions?: ISuppressedAnalysis[];
+  partialFingerprints: IPartialFingerprint;
 }
 
 // Interface for the SARIF log structure
@@ -109,6 +120,7 @@ export interface ISarifPhysicalLocation {
 
 export interface ISarifRule {
   id: string;
+  name: string;
   helpUri?: string;
   shortDescription?: {
     text: string;
@@ -118,14 +130,20 @@ export interface ISarifRule {
   };
 }
 
+export interface IPartialFingerprint {
+  buildFolderPathHash: string;
+  ruleIdHash?: string;
+  messageIdHash: string;
+}
+
 interface IMessage extends TEslint.Linter.LintMessage {
   suppressions?: ISuppressedAnalysis[];
 }
 
 const INTERNAL_ERROR_ID: 'ESL0999' = 'ESL0999';
 const SARIF_VERSION: '2.1.0' = '2.1.0';
-const SARIF_INFORMATION_URI: 'http://json.schemastore.org/sarif-2.1.0-rtm.5' =
-  'http://json.schemastore.org/sarif-2.1.0-rtm.5';
+const SARIF_INFORMATION_URI: 'https://json.schemastore.org/sarif-2.1.0.json' =
+  'https://json.schemastore.org/sarif-2.1.0.json';
 /**
  * Converts ESLint results into a SARIF (Static Analysis Results Interchange Format) log.
  *
@@ -168,8 +186,12 @@ export function formatEslintResultsAsSARIF(
         name: 'ESLint',
         informationUri: 'https://eslint.org',
         version: eslintVersion,
+        fullName: `Eslint ${eslintVersion}`,
         rules: []
       }
+    },
+    automationDetails: {
+      id: `ESLint-${eslintVersion}`
     }
   };
 
@@ -215,6 +237,8 @@ export function formatEslintResultsAsSARIF(
       const physicalLocation: ISarifPhysicalLocation = {
         artifactLocation
       };
+      const messageIdHash: string = crypto.createHash('md5').update(message.message).digest('hex');
+      const buildFolderPathHash: string = crypto.createHash('md5').update(fileUrl).digest('hex');
 
       const sarifRepresentation: ISarifRepresentation = {
         level,
@@ -225,11 +249,22 @@ export function formatEslintResultsAsSARIF(
           {
             physicalLocation
           }
-        ]
+        ],
+        partialFingerprints: {
+          messageIdHash,
+          buildFolderPathHash
+        }
       };
 
       if (message.ruleId) {
         sarifRepresentation.ruleId = message.ruleId;
+        const name: string = message.ruleId
+          .replace(/[^a-zA-Z0-9 ]/g, ' ')
+          .split(' ')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+          .join('');
+        const ruleIdHash: string = crypto.createHash('md5').update(message.ruleId).digest('hex');
+        sarifRepresentation.partialFingerprints.ruleIdHash = ruleIdHash;
 
         if (rulesMeta && sarifRuleIndices.get(message.ruleId) === undefined) {
           const meta: TEslint.Rule.RuleMetaData = rulesMeta[message.ruleId];
@@ -245,6 +280,7 @@ export function formatEslintResultsAsSARIF(
               const sarifRule: ISarifRule = {
                 id: message.ruleId,
                 helpUri: meta.docs.url,
+                name,
                 properties: {
                   category: meta.docs.category
                 },
@@ -257,6 +293,7 @@ export function formatEslintResultsAsSARIF(
             } else {
               sarifRules.push({
                 id: message.ruleId,
+                name: 'NoCategoryProvided',
                 properties: {
                   category: 'No category provided'
                 },
@@ -277,7 +314,7 @@ export function formatEslintResultsAsSARIF(
             ? message.suppressions.map((suppression: ISuppressedAnalysis) => {
                 return {
                   kind: suppression.kind === 'directive' ? 'inSource' : 'external',
-                  justification: suppression.justification
+                  justification: suppression.justification ?? ''
                 };
               })
             : [];
